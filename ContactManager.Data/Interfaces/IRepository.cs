@@ -1,7 +1,7 @@
 using ContactManager.Data.Entities;
 using System.Linq.Expressions;
 
-namespace TodoListApp.Data.Repositories.Interfaces;
+namespace ContactManager.Data.Interfaces;
 public interface IRepository<T> where T : class
 {
     Task<IEnumerable<T>> GetAllAsync();

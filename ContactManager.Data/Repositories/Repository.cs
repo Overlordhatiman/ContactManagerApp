@@ -1,9 +1,8 @@
 using System.Linq.Expressions;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using TodoListApp.Data.Repositories.Interfaces;
 using ContactManager.Data.Context;
-using System.Net.NetworkInformation;
+using ContactManager.Data.Interfaces;
+using ContactManager.Data.Entities;
 
 namespace TodoListApp.Data.Repositories;
 public abstract class Repository<T> : IRepository<T> where T : class
