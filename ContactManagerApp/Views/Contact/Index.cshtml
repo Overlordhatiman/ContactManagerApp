@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ContactManagerApp.Models.ContactViewModel>
+
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+<h2>Contact Manager</h2>
+
+<form id="uploadForm" enctype="multipart/form-data" method="post" asp-action="UploadCsv" asp-controller="Contact">
+    <div class="mb-3">
+        <input type="file" name="file" class="form-control" />
+        <button type="submit" class="btn btn-primary mt-2">Upload CSV</button>
+    </div>
+</form>
+
+<input id="searchInput" type="text" placeholder="Search..." class="form-control mb-3" />
+
+<div id="contactsContainer">
+    @await Html.PartialAsync("_ContactTable", Model)
+</div>
+
+@section Scripts {
+    <script src="~/js/contacts.js"></script>
+}

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ContactManagerApp.Models.ContactViewModel>
+
+<table id="contactsTable" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th data-column="name">Name</th>
+            <th data-column="dateOfBirth">Date of Birth</th>
+            <th data-column="married">Married</th>
+            <th data-column="phone">Phone</th>
+            <th data-column="salary">Salary</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model)
+        {
+            <tr data-id="@contact.Id" id="contact-@contact.Id">
+                <td>
+                    <input type="text" class="form-control form-control-sm editable-field"
+                           data-field="name" value="@contact.Name"
+                           data-original-value="@contact.Name" disabled />
+                </td>
+                <td>
+                    <input type="date" class="form-control form-control-sm editable-field"
+                           data-field="dateOfBirth"
+                           value="@(contact.DateOfBirth != null ? DateTime.Parse(contact.DateOfBirth).ToString("yyyy-MM-dd") : "")"
+                           data-original-value="@contact.DateOfBirth" disabled />
+                </td>
+                <td>
+                    <select class="form-control form-control-sm editable-field"
+                            data-field="married" data-original-value="@contact.Married" disabled>
+                        <option value="">Select</option>
+                        <option value="True" selected="@(contact.Married == true)">Yes</option>
+                        <option value="False" selected="@(contact.Married == false)">No</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="tel" class="form-control form-control-sm editable-field"
+                           data-field="phone" value="@contact.Phone"
+                           data-original-value="@contact.Phone" disabled />
+                </td>
+                <td>
+                    <input type="number" step="0.01" class="form-control form-control-sm editable-field"
+                           data-field="salary" value="@contact.Salary"
+                           data-original-value="@contact.Salary"
+                           placeholder="@contact.Salary" disabled />
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-success btn-sm save-btn"
+                                style="display: none;" data-id="@contact.Id">
+                            Save
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-sm cancel-btn"
+                                style="display: none;" data-id="@contact.Id">
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-warning btn-sm edit-btn"
+                                data-id="@contact.Id">
+                            Edit
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm delete-btn"
+                                data-id="@contact.Id">
+                            Delete
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

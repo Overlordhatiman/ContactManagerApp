@@ -9,6 +9,6 @@ namespace ContactManager.Core.Interfaces
 {
     public interface IFileParserService
     {
-        Task<List<ContactDto>> ParseCsvAsync(Stream csvStream);
+        Task<List<ContactDto>> ParseCsvAsync(string tempFilePath);
     }
 }
